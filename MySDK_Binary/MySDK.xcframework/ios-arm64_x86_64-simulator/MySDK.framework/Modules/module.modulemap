@@ -1,3 +1,0 @@
-framework module MySDK {
-  header "MySDK-Swift.h"
-}
