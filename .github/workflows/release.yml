@@ -1,0 +1,59 @@
+name: Build and Release XCFramework
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-14
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Build XCFramework
+        run: ./build_xcframework.sh
+
+      - name: Get tag version
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Update Package.swift for distribution
+        run: |
+          VERSION=${{ steps.get_version.outputs.VERSION }}
+          CHECKSUM=$(cat dist/checksum.txt)
+          REPO_URL="https://github.com/${{ github.repository }}"
+          DOWNLOAD_URL="${REPO_URL}/releases/download/${VERSION}/MySDK.xcframework.zip"
+          
+          # 更新 MySDK_Binary/Package.swift 中的 URL 和 Checksum
+          sed -i '' "s|url: \".*\"|url: \"${DOWNLOAD_URL}\"|" MySDK_Binary/Package.swift
+          sed -i '' "s|checksum: \".*\"|checksum: \"${CHECKSUM}\"|" MySDK_Binary/Package.swift
+          
+          echo "Updated Package.swift with URL: ${DOWNLOAD_URL} and Checksum: ${CHECKSUM}"
+
+      - name: Create Release and Upload Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/MySDK.xcframework.zip
+          name: Release ${{ steps.get_version.outputs.VERSION }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit and Push Package.swift changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add MySDK_Binary/Package.swift
+          git commit -m "chore: update MySDK_Binary Package.swift for version ${{ steps.get_version.outputs.VERSION }}" || echo "No changes to commit"
+          git push origin HEAD:main

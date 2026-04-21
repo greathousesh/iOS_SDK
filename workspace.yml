@@ -1,0 +1,4 @@
+name: MySDK
+projects:
+  - MySDK.xcodeproj
+  - MySDKBuild.xcodeproj

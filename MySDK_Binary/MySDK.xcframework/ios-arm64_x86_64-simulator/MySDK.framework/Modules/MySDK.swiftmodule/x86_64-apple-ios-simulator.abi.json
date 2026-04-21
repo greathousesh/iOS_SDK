@@ -1,0 +1,299 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "MySDK",
+    "printedName": "MySDK",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "MySDK"
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftUI",
+        "printedName": "SwiftUI",
+        "declKind": "Import",
+        "moduleName": "MySDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MySDKService",
+        "printedName": "MySDKService",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "text",
+            "printedName": "text",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:5MySDK0A10SDKServiceV4textSSvp",
+            "mangledName": "$s5MySDK0A10SDKServiceV4textSSvp",
+            "moduleName": "MySDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "SetterAccess",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:5MySDK0A10SDKServiceV4textSSvg",
+                "mangledName": "$s5MySDK0A10SDKServiceV4textSSvg",
+                "moduleName": "MySDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MySDKService",
+                "printedName": "MySDK.MySDKService",
+                "usr": "s:5MySDK0A10SDKServiceV"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:5MySDK0A10SDKServiceVACycfc",
+            "mangledName": "$s5MySDK0A10SDKServiceVACycfc",
+            "moduleName": "MySDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "readConfig",
+            "printedName": "readConfig()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:5MySDK0A10SDKServiceV10readConfigSSyF",
+            "mangledName": "$s5MySDK0A10SDKServiceV10readConfigSSyF",
+            "moduleName": "MySDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:5MySDK0A10SDKServiceV",
+        "mangledName": "$s5MySDK0A10SDKServiceV",
+        "moduleName": "MySDK",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SDKImageView",
+        "printedName": "SDKImageView",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SDKImageView",
+                "printedName": "MySDK.SDKImageView",
+                "usr": "s:5MySDK12SDKImageViewV"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:5MySDK12SDKImageViewVACycfc",
+            "mangledName": "$s5MySDK12SDKImageViewVACycfc",
+            "moduleName": "MySDK",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "body",
+            "printedName": "body",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OpaqueTypeArchetype",
+                "printedName": "some SwiftUI.View",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "View",
+                    "printedName": "SwiftUI.View",
+                    "usr": "s:7SwiftUI4ViewP"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:5MySDK12SDKImageViewV4bodyQrvp",
+            "mangledName": "$s5MySDK12SDKImageViewV4bodyQrvp",
+            "moduleName": "MySDK",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OpaqueTypeArchetype",
+                    "printedName": "some SwiftUI.View",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "View",
+                        "printedName": "SwiftUI.View",
+                        "usr": "s:7SwiftUI4ViewP"
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:5MySDK12SDKImageViewV4bodyQrvg",
+                "mangledName": "$s5MySDK12SDKImageViewV4bodyQrvg",
+                "moduleName": "MySDK",
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:5MySDK12SDKImageViewV",
+        "mangledName": "$s5MySDK12SDKImageViewV",
+        "moduleName": "MySDK",
+        "declAttributes": [
+          "Preconcurrency",
+          "Custom",
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "View",
+            "printedName": "View",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Body",
+                "printedName": "Body",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OpaqueTypeArchetype",
+                    "printedName": "some SwiftUI.View",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "View",
+                        "printedName": "SwiftUI.View",
+                        "usr": "s:7SwiftUI4ViewP"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "usr": "s:7SwiftUI4ViewP",
+            "mangledName": "$s7SwiftUI4ViewP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/fangwei\/Desktop\/swift-sdk\/MySDK\/Sources\/MySDK\/MySDK.swift",
+      "kind": "StringLiteral",
+      "offset": 226,
+      "length": 15,
+      "value": "\"Hello, World!\""
+    }
+  ]
+}

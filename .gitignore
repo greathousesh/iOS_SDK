@@ -1,0 +1,4 @@
+archives/
+dist/
+.DS_Store
+MySDK/.build/

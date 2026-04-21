@@ -1,0 +1,32 @@
+name: MySDK
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: 15.0
+
+# 修复后的 Workspace 定义：直接引用生成的工程文件路径
+workspace:
+  name: MySDK
+  projects:
+    - MySDK.xcodeproj
+    - ExampleApp/MySDKExample.xcodeproj
+    - MySDKBuild.xcodeproj
+
+packages:
+  MySDK:
+    path: MySDK_Binary
+
+targets:
+  MySDK:
+    type: framework
+    platform: iOS
+    sources:
+      - path: MySDK/Sources/MySDK
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.example.MySDK
+    info:
+      path: MySDK/Info.plist
+      properties:
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleShortVersionString: 1.0.0
+        CFBundleVersion: 1

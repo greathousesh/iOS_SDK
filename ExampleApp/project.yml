@@ -1,0 +1,27 @@
+name: MySDKExample
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: 15.0
+
+packages:
+  MySDK:
+    path: ../MySDK_Binary # 指向二进制包进行测试
+
+targets:
+  MySDKExample:
+    type: application
+    platform: iOS
+    sources:
+      - path: .
+    dependencies:
+      - package: MySDK
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.example.MySDKExample
+    info:
+      path: Info.plist
+      properties:
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleShortVersionString: 1.0.0
+        CFBundleVersion: 1
+        UILaunchScreen: {}

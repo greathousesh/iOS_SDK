@@ -1,0 +1,25 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.3.1 effective-5.10 (swiftlang-6.3.1.1.2 clang-2100.0.123.102)
+// swift-module-flags: -target x86_64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name MySDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.1
+import Foundation
+import Swift
+import SwiftUI
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public struct MySDKService {
+  public var text: Swift.String {
+    get
+  }
+  public init()
+  public func readConfig() -> Swift.String
+}
+@_Concurrency.MainActor @preconcurrency public struct SDKImageView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init()
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s5MySDK12SDKImageViewV4bodyQrvp", 0) __
+}
+extension MySDK.SDKImageView : Swift.Sendable {}
