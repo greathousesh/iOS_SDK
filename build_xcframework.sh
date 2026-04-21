@@ -4,7 +4,7 @@
 set -e
 
 PROJECT_NAME="MySDKBuild"
-SCHEME="MySDK"
+SCHEME="MySDK-Release"
 FRAMEWORK_NAME="MySDK"
 OUTPUT_DIR="./dist"
 
