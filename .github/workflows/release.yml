@@ -60,17 +60,23 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # 备份修改后的 Package.swift
-          cp Package.swift /tmp/Package.swift.bak
-          
-          # 强制切换回 main 分支并清理工作区，避免构建产物干扰
+          # 1. 获取预先计算好的变量
+          VERSION=${{ steps.get_version.outputs.VERSION }}
+          CHECKSUM=$(cat dist/checksum.txt)
+          REPO_URL="https://github.com/${{ github.repository }}"
+          DOWNLOAD_URL="${REPO_URL}/releases/download/${VERSION}/MySDK.xcframework.zip"
+
+          # 2. 彻底清理并同步 main 分支
           git fetch origin main
-          git checkout main
+          git checkout -f main
           git reset --hard origin/main
-          
-          # 还原并提交
-          cp /tmp/Package.swift.bak Package.swift
+
+          # 3. 在干净的 main 分支上执行修改
+          sed -i '' "s|url: \".*\"|url: \"${DOWNLOAD_URL}\"|" Package.swift
+          sed -i '' "s|checksum: \".*\"|checksum: \"${CHECKSUM}\"|" Package.swift
+
+          # 4. 提交并推送
           git add Package.swift
-          git commit -m "chore: update Package.swift for version ${{ steps.get_version.outputs.VERSION }}" || echo "No changes to commit"
+          git commit -m "chore: update Package.swift for version ${VERSION}" || echo "No changes to commit"
           git push origin main
 
