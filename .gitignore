@@ -2,3 +2,10 @@ archives/
 dist/
 .DS_Store
 MySDK/.build/
+
+# SDK Build Artifacts
+dist/
+archives/
+*.xcodeproj/
+*.xcworkspace/
+DerivedData/
