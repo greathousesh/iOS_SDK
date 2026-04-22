@@ -61,6 +61,8 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add Package.swift
           git commit -m "chore: update Package.swift for version ${{ steps.get_version.outputs.VERSION }}" || echo "No changes to commit"
-          git pull --rebase origin main
+          # 使用 fetch + reset 来确保 HEAD 与远程同步，避免 rebase 冲突
+          git fetch origin main
+          git rebase origin/main
           git push origin HEAD:main
 
