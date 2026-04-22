@@ -16,7 +16,7 @@ let package = Package(
         .binaryTarget(
             name: "MySDK",
             url: "https://github.com/greathousesh/iOS_SDK/releases/download/v0.0.11/MySDK.xcframework.zip",
-            checksum: "ae446a765b707e4e966b8c52c6d01b91d2f7b6c53c6d0bff78600d142d298a39"
+            checksum: "eea7e821a4b3c478b6d40cde35bed3328358eed8db0acac280e4e671f3d63321"
         )
     ]
 )
