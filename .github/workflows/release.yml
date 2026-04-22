@@ -39,9 +39,9 @@ jobs:
           REPO_URL="https://github.com/${{ github.repository }}"
           DOWNLOAD_URL="${REPO_URL}/releases/download/${VERSION}/MySDK.xcframework.zip"
           
-          # 更新 Package.swift 中的 URL 和 Checksum
-          sed -i '' "s|url: \".*\"|url: \"${DOWNLOAD_URL}\"|" Package.swift
-          sed -i '' "s|checksum: \".*\"|checksum: \"${CHECKSUM}\"|" Package.swift
+          # 使用 perl 进行更精确的跨平台正则替换，确保只替换 binaryTarget 块内的内容
+          perl -i -pe "s|url: \".*\"|url: \"${DOWNLOAD_URL}\"|g" Package.swift
+          perl -i -pe "s|checksum: \".*\"|checksum: \"${CHECKSUM}\"|g" Package.swift
           
           echo "Updated Package.swift with URL: ${DOWNLOAD_URL} and Checksum: ${CHECKSUM}"
 
@@ -55,10 +55,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Commit and Push Package.swift changes
+      - name: Commit, Push and Update Tag
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          VERSION=${{ steps.get_version.outputs.VERSION }}
+          
           git add Package.swift
-          git commit -m "chore: update MySDK_Binary Package.swift for version ${{ steps.get_version.outputs.VERSION }}" || echo "No changes to commit"
+          git commit -m "chore: update MySDK binary checksum for ${VERSION}" || echo "No changes to commit"
+          
+          # 1. 推送到 main 分支
           git push origin HEAD:main
+          
+          # 2. 关键步骤：强制将 Tag 指向当前这个包含新 Package.swift 的提交，并强制推送覆盖远程 Tag
+          git tag -f ${VERSION}
+          git push origin ${VERSION} --force
