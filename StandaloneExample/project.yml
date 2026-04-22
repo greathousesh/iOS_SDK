@@ -6,10 +6,10 @@ options:
   xcodeVersion: 16.0
 
 packages:
-  # 关键步骤：通过命令行引入远程 SDK
-  MySDK:
+  # 将 Key 改为与仓库名一致，提高识别率
+  iOS_SDK:
     url: https://github.com/greathousesh/iOS_SDK.git
-    from: 0.0.9
+    from: 0.0.16
 
 targets:
   StandaloneExample:
@@ -19,10 +19,10 @@ targets:
     sources:
       - path: Sources
     dependencies:
-      - package: MySDK
+      - package: iOS_SDK
+        product: MySDK # 明确指定 Package 中的 Product
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: com.example.StandaloneExample
-      DEVELOPMENT_TEAM: "" # 如果有团队 ID 可以在此填入
     info:
       path: Sources/Info.plist
       properties:
