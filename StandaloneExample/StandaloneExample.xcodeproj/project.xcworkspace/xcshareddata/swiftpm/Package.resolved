@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/greathousesh/iOS_SDK.git",
       "state" : {
-        "revision" : "e7f91b2201e0b64c44dd17593e336d131838da87",
-        "version" : "0.0.16"
+        "revision" : "352473a9404648ccdea78b8fbc662c6d9f2346a2",
+        "version" : "0.0.18"
       }
     }
   ],

@@ -59,10 +59,18 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # 备份修改后的 Package.swift
+          cp Package.swift /tmp/Package.swift.bak
+          
+          # 强制切换回 main 分支并清理工作区，避免构建产物干扰
+          git fetch origin main
+          git checkout main
+          git reset --hard origin/main
+          
+          # 还原并提交
+          cp /tmp/Package.swift.bak Package.swift
           git add Package.swift
           git commit -m "chore: update Package.swift for version ${{ steps.get_version.outputs.VERSION }}" || echo "No changes to commit"
-          # 使用 fetch + reset 来确保 HEAD 与远程同步，避免 rebase 冲突
-          git fetch origin main
-          git rebase origin/main
-          git push origin HEAD:main
+          git push origin main
 

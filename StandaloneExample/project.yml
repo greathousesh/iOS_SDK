@@ -9,7 +9,7 @@ packages:
   # 将 Key 改为与仓库名一致，提高识别率
   iOS_SDK:
     url: https://github.com/greathousesh/iOS_SDK.git
-    from: 0.0.17
+    from: 0.0.18
 
 targets:
   StandaloneExample:
