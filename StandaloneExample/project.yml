@@ -1,0 +1,32 @@
+name: StandaloneExample
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: 16.0
+  xcodeVersion: 16.0
+
+packages:
+  # 关键步骤：通过命令行引入远程 SDK
+  MySDK:
+    url: https://github.com/greathousesh/iOS_SDK.git
+    from: 0.0.9
+
+targets:
+  StandaloneExample:
+    type: application
+    platform: iOS
+    deploymentTarget: 16.0
+    sources:
+      - path: Sources
+    dependencies:
+      - package: MySDK
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.example.StandaloneExample
+      DEVELOPMENT_TEAM: "" # 如果有团队 ID 可以在此填入
+    info:
+      path: Sources/Info.plist
+      properties:
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleShortVersionString: 1.0.0
+        CFBundleVersion: 1
+        UILaunchScreen: {}

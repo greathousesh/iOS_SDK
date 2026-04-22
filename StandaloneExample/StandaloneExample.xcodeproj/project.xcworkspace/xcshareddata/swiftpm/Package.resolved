@@ -1,0 +1,15 @@
+{
+  "originHash" : "30132daabf9a9e9df844c5ffa69d12f015caecbdace50279cf93a63a645ce82c",
+  "pins" : [
+    {
+      "identity" : "ios_sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/greathousesh/iOS_SDK.git",
+      "state" : {
+        "revision" : "47cb7142b4383b044b9e6ff2e0b4762d80e6affb",
+        "version" : "0.0.9"
+      }
+    }
+  ],
+  "version" : 3
+}
